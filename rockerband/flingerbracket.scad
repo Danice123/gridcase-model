@@ -24,15 +24,15 @@ module plate() {
     }
 }
 
-module raisedScrewHole() {
+module raisedScrewHole(height) {
     difference() {
         union() {
-            cylinder(3, r=4);
-            translate([-4, 0, 0]) cube([8, 4, 3], false);
+            cylinder(height, r=4);
+            translate([-4, 0, 0]) cube([8, 4, height], false);
         }
         
         // translate([0, 0, 1]) cylinder(2, r=3);
-        cylinder(3, r=2);
+        cylinder(height, r=2);
     }
 }
 
@@ -43,10 +43,10 @@ module brace() {
             translate([2, 0, 0]) cube([1, 5, 11.5], false);
             translate([27, 0, 0]) cube([1, 5, 11.5], false);
 
-            translate([4, -4, 8.5]) raisedScrewHole();
-            translate([26, -4, 8.5]) raisedScrewHole();
+            translate([4, -4, 8.5]) raisedScrewHole(3);
+            translate([26, -4, 8.5]) raisedScrewHole(3);
 
-            translate([8, -4, 8.5]) cube([14, 4, 1.5], false);
+            translate([8, -4, 8.5]) cube([14, 4, 3], false);
         }
 
         translate([14.5, 0, 2.5]) rotate([90, 90, 0]) cylinder(r=2.5, h=4, center=true);
@@ -77,7 +77,7 @@ translate([0, 0, 13]) {
 
 translate([9, 0, 13]) mirror([0, 0, 1]) union() {
     brace();
-    //translate([9, -2, 8.5]) cube([12, 2.75, 16.75], false);
+    
 }
 translate([9, 63.5,  13]) mirror([0, 1, 0]) mirror([0, 0, 1]) brace();
 
