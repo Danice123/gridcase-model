@@ -1,7 +1,7 @@
 use <screwbracket.scad>;
 
 module plate() {
-    plateLength = 63.5;
+    plateLength = 64;
     plateWidth = 46.5;
     plateHeight = 1.5;
 
@@ -85,7 +85,7 @@ translate([9, 0, 13]) mirror([0, 0, 1]) union() {
     brace(2);
     
 }
-translate([9, 63.5,  13]) mirror([0, 1, 0]) mirror([0, 0, 1]) brace(2.5);
+translate([9, 64,  13]) mirror([0, 1, 0]) mirror([0, 0, 1]) brace(2.5);
 
 translate([-5, 35, 1.5]) switchSocket();
 
