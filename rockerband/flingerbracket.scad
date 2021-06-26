@@ -1,3 +1,4 @@
+use <screwbracket.scad>;
 
 module plate() {
     plateLength = 63.5;
@@ -21,18 +22,6 @@ module plate() {
         
         translate([3.25, 22, 0]) cylinder(r=2.625, h=10, center=true);
         translate([45, 41, 0]) cylinder(r=2.625, h=10, center=true);
-    }
-}
-
-module raisedScrewHole(height) {
-    difference() {
-        union() {
-            cylinder(height, r=4);
-            translate([-4, 0, 0]) cube([8, 4, height], false);
-        }
-        
-        // translate([0, 0, 1]) cylinder(2, r=3);
-        cylinder(height, r=2);
     }
 }
 
