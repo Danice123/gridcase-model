@@ -17,11 +17,14 @@ module plate() {
         }
         translate([15, 1.75, 0]) cube([18, plateLength - 3.5, 4], false);
 
-        translate([0, 49.5, 0]) cube([4.5, 2, plateHeight], false);
+        translate([0, 49.5, plateHeight / 2]) cube([9, 2, plateHeight / 2], false);
         translate([40, 12, 0]) cube([6.5, 2, plateHeight], false);
         
         translate([3.25, 22, 0]) cylinder(r=2.625, h=10, center=true);
         translate([45, 41, 0]) cylinder(r=2.625, h=10, center=true);
+
+        translate([plateWidth - 7, 12, 0]) cube([2, 13, 10], false);
+        translate([9, plateLength - 1.5 - 26.5, 0]) cube([2, 26.5, 10], false);
     }
 }
 
@@ -57,6 +60,18 @@ module screwOffset() {
     }
 }
 
+module switchFitting() {
+    difference() {
+        cube([12, 3, 13], false);
+        translate([5, 2, 0]) cube([1, 1, 14], false);
+    }
+}
+
+module switchSocket() {
+    switchFitting();
+    translate([0, 20.5, 0]) mirror([0, 1, 0]) switchFitting();
+}
+
 translate([0, 0, 13]) {
     plate();
     translate([3.25, 22, -2.70]) screwOffset();
@@ -70,4 +85,6 @@ translate([9, 0, 13]) mirror([0, 0, 1]) union() {
 }
 translate([9, 63.5,  13]) mirror([0, 1, 0]) mirror([0, 0, 1]) brace();
 
+translate([-5, 35, 1.5]) switchSocket();
 
+translate([51, 7, 1.5]) mirror([1, 0, 0]) switchSocket();
